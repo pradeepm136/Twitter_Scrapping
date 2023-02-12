@@ -1,2 +1,2 @@
 # Twitter_Scrapping
-Twitter scrapping.
+Twitter data scrapping using streamlit GUI with Python.
