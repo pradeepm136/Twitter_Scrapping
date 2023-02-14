@@ -12,12 +12,11 @@ def scraping_tweets(username, start_date, end_date, tweet_limit):
     tweet_list = []
     for i, tweet in enumerate(
         sntwitter.TwitterSearchScraper(f'{username} since:{start_date} until:{end_date}').get_items()):  # declare a username or search keyword
-        data = (
-        [tweet.date, tweet.id, tweet.content, tweet.user.username, tweet.likeCount, tweet.retweetCount, tweet.url,
-         tweet.replyCount, tweet.lang, tweet.source])
-        tweet_list.append(data)
-        if i == tweet_limit - 1:
-            break
+        data = [tweet.date, tweet.id, tweet.content, tweet.user.username, tweet.likeCount, tweet.retweetCount, tweet.url,
+         tweet.replyCount, tweet.lang, tweet.source]
+        
+    tweet_list.append(data)
+    if i == tweet_limit - 1:
 
         return tweet_list
 
