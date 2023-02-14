@@ -16,7 +16,7 @@ def scraping_tweets(username, start_date, end_date, tweet_limit):
          tweet.replyCount, tweet.lang, tweet.source]
         
         tweet_list.append(data)
-        if i == tweet_limit - 1:
+        if i == tweet_limit:
             break
 
     return tweet_list
