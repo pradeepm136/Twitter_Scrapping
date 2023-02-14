@@ -72,3 +72,20 @@ if st.button("upload to MongoDB"):
     tweet_data_json = json.loads(tweet_data.to_json(orient='records'))
     collection.insert_many(tweet_data_json)
     st.success('uploaded to MongoDB')
+
+    # view in graphical format 
+option_name = ["most liked tweets","most retweeted tweets"]
+option = st.radio("View in graph", option_name, index=1)
+
+if option == "most liked tweets":
+  tweet = scraping_tweets(hashtag, start_date, end_date, tweet_limit)
+  tweet_data = create_df(tweet)
+  st.write("most liked tweets shown here")
+  fig=px.bar(tweet_data,x="Username",y="Like Count")
+  st.write(fig)
+else:
+  tweet = scraping_tweets(hashtag, start_date, end_date, tweet_limit)
+  tweet_data = create_df(tweet)
+  st.write("most retweeted tweets shown here")
+  figur=px.bar(tweet_data,x="Username",y="Retweet Count")
+  st.write(figur)
