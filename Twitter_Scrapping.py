@@ -72,7 +72,5 @@ if st.button("upload to MongoDB"):
     tweet_data_json = json.loads(tweet_data.to_json(orient='records'))
     collection.insert_many(tweet_data_json)
     st.success('uploaded to MongoDB')
-
-    # view in graphical format 
-option_name = ["most liked tweets","most retweeted tweets"]
-option = st.radio("View in graph", option_name, index=1)
+    else:
+        return null
