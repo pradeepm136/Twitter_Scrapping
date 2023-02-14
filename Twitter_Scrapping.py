@@ -18,8 +18,7 @@ def scraping_tweets(username, start_date, end_date, tweet_limit):
         tweet_list.append(data)
     if i==tweet_limit-1:
       break
-  
-  return tweet_list
+    return tweet_list
 
 def create_df(tweets_list): #Creating dataframe
     tweet_data = pd.DataFrame(tweets_list,
