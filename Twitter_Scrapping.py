@@ -72,5 +72,5 @@ if st.button("upload to MongoDB"):
     tweet_data_json = json.loads(tweet_data.to_json(orient='records'))
     collection.insert_many(tweet_data_json)
     st.success('uploaded to MongoDB')
-    else:
-        return null
+else:
+    return null
