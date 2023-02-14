@@ -10,15 +10,16 @@ import base64
 # Using TwitterSearchScraper to scrape data and append tweets to list
 def scraping_tweets(username, start_date, end_date, tweet_limit):
     tweet_list = []
-    for i, tweet in enumerate(
+        for i, tweet in enumerate(
         sntwitter.TwitterSearchScraper(f'{username} since:{start_date} until:{end_date}').get_items()):  # declare a username or search keyword
         data = [tweet.date, tweet.id, tweet.content, tweet.user.username, tweet.likeCount, tweet.retweetCount, tweet.url,
-         tweet.replyCount, tweet.lang, tweet.source
-               ]
+         tweet.replyCount, tweet.lang, tweet.source]
+        
         tweet_list.append(data)
-        if i==tweet_limit-1:
+        if i == tweet_limit - 1:
             break
-     return tweet_list
+
+    return tweet_list
 
 def create_df(tweets_list): #Creating dataframe
     tweet_data = pd.DataFrame(tweets_list,
