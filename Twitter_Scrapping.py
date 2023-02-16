@@ -62,13 +62,13 @@ if st.button("Scrape Tweets"):
     st.markdown(href, unsafe_allow_html=True)
 
     # Upload to mongoDB
-if st.button("upload to MongoDB"):
+if st.button("Upload to MongoDB"):
     tweet = scraping_tweets(hashtag, start_date, end_date, tweet_limit)
     tweet_data = create_df(tweet)
 
     client = MongoClient('mongodb://localhost:27017')
-    db = client["twitter_db_streamlit"]
-    collection = db['tweet']
+    db = client["Twitter_db_streamlit"]
+    collection = db['Tweet']
     tweet_data_json = json.loads(tweet_data.to_json(orient='records'))
     collection.insert_many(tweet_data_json)
-    st.success('uploaded to MongoDB')
+    st.success('Uploaded to MongoDB')
