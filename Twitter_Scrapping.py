@@ -8,10 +8,10 @@ import base64
 
 
 # Using TwitterSearchScraper to scrape data and append tweets to list
-def scraping_tweets(username, start_date, end_date, tweet_limit):
+def scraping_tweets(hashtag, start_date, end_date, tweet_limit):
     tweet_list = []
     for i, tweet in enumerate(
-        sntwitter.TwitterSearchScraper(f'{username} since:{start_date} until:{end_date}').get_items()):  # declare a username or search keyword
+        sntwitter.TwitterSearchScraper(f'{hashtag} since:{start_date} until:{end_date}').get_items()):  # declare a username or search keyword
         data = [tweet.date, tweet.id, tweet.content, tweet.user.username, tweet.likeCount, tweet.retweetCount, tweet.url,
          tweet.replyCount, tweet.lang, tweet.source]
         
@@ -32,7 +32,7 @@ def create_df(tweets_list): #Creating dataframe
 st.title("Scrape the Tweets")
 
 # Get input from user for username/hashtag or search keywords
-hashtag = st.text_input("Enter the hashtag:")
+hashtag = st.text_input("Enter the Username/Keyword to search:")
 start_date = st.date_input("Select start date:", key="start_date")
 end_date = st.date_input("Select end date:", key="end_date")
 tweet_limit = st.number_input("Enter the number of tweet you need:", key="limit")
