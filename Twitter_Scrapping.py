@@ -69,7 +69,7 @@ if st.button("Upload to MongoDB"):
 
     client = MongoClient('mongodb://localhost:27017')
     db = client["Twitter_db_streamlit"]
-    collection = db[hashtag]
+    collection = db['tweet']
     tweet_data_json = json.loads(tweet_data.to_json(orient='records'))
     collection.insert_many(tweet_data_json)
     st.success('Uploaded to MongoDB')
