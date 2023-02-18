@@ -67,7 +67,7 @@ if st.button("Upload to MongoDB"):
     tweet = scraping_tweets(hashtag, start_date, end_date, tweet_limit)
     tweet_data = create_df(tweet)
 
-    client = MongoClient('mongodb://localhost:27017/')
+    client = MongoClient('mongodb+srv://pradeepm136:Pradeep%409980@cluster0.hwjaa45.mongodb.net/test')
     db = client["Twitter_db_streamlit"]
     collection = db['tweet']
     tweet_data_json = json.loads(tweet_data.to_json(orient='records'))
