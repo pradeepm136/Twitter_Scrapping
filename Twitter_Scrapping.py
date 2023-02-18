@@ -62,6 +62,7 @@ if st.button("Scrape Tweets"):
     st.markdown(href, unsafe_allow_html=True)
 
     # Upload to mongoDB
+    st.cache_data(ttl=600)
 if st.button("Upload to MongoDB"):
     tweet = scraping_tweets(hashtag, start_date, end_date, tweet_limit)
     tweet_data = create_df(tweet)
